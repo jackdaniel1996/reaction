@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// npx tailwindcss -i ./src/css/style.css -o ./dist/output.css --watch
+// tailwind components: https://www.hyperui.dev/
+body{
+    height: 100vh;
+    display: flex;
+}
+
+// .main-container{
+//     width: 500px;    
+// }
