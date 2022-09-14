@@ -2,13 +2,131 @@
 @tailwind components;
 @tailwind utilities;
 
+$duration: 0.5s;
+
 // npx tailwindcss -i ./src/css/style.css -o ./dist/output.css --watch
 // tailwind components: https://www.hyperui.dev/
-body{
+body {
     height: 100vh;
     display: flex;
 }
 
-// .main-container{
-//     width: 500px;    
-// }
+.cube {
+    transition: all $duration ease-in-out;
+    transform-style: preserve-3d;
+    transform-origin: right;
+    width: 100%;
+    height: 100%;
+
+    &.starting {
+        transform: rotateY(90deg);
+        
+        .front { 
+            pointer-events: none;
+            > .container {
+                box-shadow: none;
+            }
+            transform: rotateY(0deg);
+            transition: all $duration ease-in-out;
+        }
+
+        .top {
+            transform: rotateY(-90deg) translate3d(-18.7em, 0, 0);
+        }
+    }
+}
+
+.startButton {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    height: 64px;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 64px;
+    font-size: 16pt;
+    font-weight: 700;
+    color: #fff;
+    box-shadow: inset 0 0 0 3px rgb(50 50 50);
+    transition: all 0.5s ease;
+
+    &:hover {
+        cursor: pointer;
+        -webkit-animation-name: pulse-grow-on-hover;
+        animation-name: pulse-grow-on-hover;
+        -webkit-animation-duration: 0.5s;
+        animation-duration: 0.5s;
+        -webkit-animation-timing-function: linear;
+        animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        -webkit-animation-direction: alternate;
+        animation-direction: alternate;
+    }
+
+    &#stopButton{
+        color: rgb(50,50,50);
+
+        &:hover {
+            animation: none;
+        }
+    }
+}
+
+.top {   
+    transform: rotateY(90deg) translate3d(0, 0, 18.7em);   
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.front {
+    transform: translate3d(-18.7em, 0, 0);
+    transition: all .6s ease-in-out;
+    left: 18.7em;
+    position: relative;
+}
+
+@-webkit-keyframes pulse-grow-on-hover {
+    to {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+}
+@keyframes pulse-grow-on-hover {
+    to {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+}
+
+input#userName {
+    &:focus-visible {
+        border-bottom: 2px solid rgb(50 50 50);
+        outline: none;
+    }
+}
+
+.animationContainer,
+#headline {
+    transform: translate(-100vw ,0);
+}
+
+.background-animate {
+    display: flex;
+    background-size: 200%;
+    -webkit-animation: bgGradient 5s ease infinite;
+    -moz-animation: bgGradient 5s ease infinite;
+    animation: bgGradient 5s ease infinite;
+}
+
+@keyframes bgGradient {
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
