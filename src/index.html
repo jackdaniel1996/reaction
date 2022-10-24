@@ -13,7 +13,6 @@
     <!-- Css -->
     <link href="../dist/output.css" rel="stylesheet"> 
     <!-- Js -->
-    <script src="js/main.js"></script>
     <script src="js/reaction.js"></script>
 
     <title>Reaction Game</title>
@@ -21,27 +20,28 @@
 <body>
     <div class="h-screen w-screen background-animate bg-gradient-to-r from-orange-400 via-red-400 to-rose-400">   
         <div class="main-container container md:m-auto m-2.5 w-full md:w-[37.5rem]"> 
-            <h1 id="headline" class="text-5xl font-bold py-2 px-5 mix-blend-screen bg-white text-black inline-block my-2.5 shadow-lg">Reaction Game</h1>
+            <h1 id="headline" class="text-5xl font-bold py-2 px-5 mix-blend-screen bg-white text-black inline-block my-2.5 shadow-lg rounded">Reaction Game</h1>
             <div class="animationContainer">
                 <div class="cube transform-origin text-neutral-700">
-
-                    <div class="top bg-white shadow-lg p-10">
+                    <div class="top bg-white shadow-lg p-10 rounded">
                         <div class="text-center h-full flex flex-col justify-between">
-                            <div class="text-3xl">
-                                <span>
-                                    <span id="elapsedSec">0</span>.<span id="elapsedMil">000</span>
-                                </span>
-                                <span>Sekunden</span>
+                            <div id="timerContainer" class="text-3xl">
+                                <div class="timer">
+                                    <span>
+                                        <span id="elapsedSec">0</span>.<span id="elapsedMil">000</span>
+                                    </span>
+                                    <span>Sekunden</span>
+                                </div>
                             </div>
                             <div id="countDown" class="text-7xl font-bold">
                                 
                             </div>                                
-                            <span id="stopButton" class="startButton">Stop</span>   
+                            <span id="stopButton" class="startButton rounded">Stop</span>   
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 front">
-                        <div class="container p-5 bg-white shadow-lg">
+                        <div class="container p-5 bg-white shadow-lg rounded">
                             <div class="flex flex-col items-center">                
                                 <p class="text-lg font-medium">
                                     <p class="w-full"><b>Wie es geht:</b></p>
@@ -49,19 +49,25 @@
                                 </p>
                                 <div class="flex flex-col items-center py-5 w-full">
                                     <div class="mb-10 mt-5 h-[56px] w-full">
-                                        <label class="relative block px-2 pb-1 border-2 border-gray-200" for="name">
+                                        <label class="relative block px-2 pb-1 border-2 border-gray-200 rounded" for="name">
                                             <span class="text-xs font-medium" for="name">
                                             Name (Optional)
                                             </span>                                
-                                            <input class="w-full p-0 text-sm border-none focus:ring-0"id="userName" type="text" placeholder="Spieler 1" />
+                                            <input class="w-full p-0 text-sm border-none focus:ring-0" id="userName" type="text" placeholder="Spieler 1" />
                                         </label>  
                                     </div>
-                                    <span id="startButton" onclick="initGame();" class="startButton bg-gradient-to-t from-orange-300 to-rose-300">Start</span>   
+                                    <span id="startButton" onclick="initGame();" class="startButton bg-gradient-to-t from-orange-300 to-rose-300 rounded">Start</span>   
                                 </div>
                             </div>
                         </div>
-                        <div class="container p-5 bg-white shadow-lg">
-                            <div class="text-lg font-bold">Bestenliste:</div>
+                        <div class="container p-5 bg-white shadow-lg rounded">
+                            <div class="text-lg font-bold">Bestenliste:</div>   
+                            <div class="flex flex-nowrap place-content-between border-b-2 border-gray-200 scoreboard-row">
+                                <div class="text-left">Rang</div>
+                                <div class="text-center">Name</div>
+                                <div class="text-right">Zeit</div>
+                            </div>                         
+                            <div id="scoreboard" class="overflow-auto"></div>
                         </div>
                     </div>
                 </div>

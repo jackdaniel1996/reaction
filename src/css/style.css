@@ -12,6 +12,7 @@ body {
   transform-origin: right;
   width: 100%;
   height: 100%;
+  transform: rotateY(0deg);
 }
 .cube.starting {
   transform: rotateY(90deg);
@@ -65,7 +66,7 @@ body {
 }
 
 .top {
-  transform: rotateY(90deg) translate3d(0, 0, 18.7em);
+  transform: rotateY(90deg) translate3d(18.7em, 0, 0em);
   position: absolute;
   width: 100%;
   height: 100%;
@@ -73,7 +74,7 @@ body {
 
 .front {
   transform: translate3d(-18.7em, 0, 0);
-  transition: all 0.6s ease-in-out;
+  transition: all 0.5s ease-in-out;
   left: 18.7em;
   position: relative;
 }
@@ -121,4 +122,21 @@ input#userName:focus-visible {
   50% {
     background-position: 100% 50%;
   }
+}
+#scoreboard {
+  max-height: calc(100% - 55px);
+}
+#scoreboard > div {
+  padding: 5px;
+}
+#scoreboard .scoreboard-row > div.text-left,
+#scoreboard .scoreboard-row > div.text-right {
+  width: 20%;
+}
+#scoreboard .scoreboard-row > div.text-center {
+  width: 60%;
+}
+
+.container {
+  max-height: 385px;
 }/*# sourceMappingURL=style.css.map */
