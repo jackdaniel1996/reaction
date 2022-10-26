@@ -91,8 +91,6 @@ function createScoreboard() {
 		pos++;
 		appendRow.querySelector('.text-left').innerHTML = pos;
 	});
-	console.log(sortetScore)
-	console.log(scoreObj)
 
 }
 
@@ -120,9 +118,6 @@ function endGame(endTime) {
 	tl.add('start')
 	.to(bg, {css: { backgroundColor: "white" }, duration: 1}, 'start')
 	.to(timer, {css: { scale: 1.5, fontWeight: "bold" }, duration: 0.5}, 'start');
-	
-	console.log('stopwatch:', endTime)
-	console.log('name:', name)
 
 	function resetGame() {
 		document.querySelector('.cube').classList.remove('starting');
