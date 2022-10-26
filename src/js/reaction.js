@@ -45,7 +45,7 @@ function startGame() {
 			seconds.innerHTML = stopwatch.seconds;
 		}, 0);
 		//Stop timer
-		stop.addEventListener("click", endTimer);
+		stop.addEventListener("click", endTimer, { once: true });
 		function endTimer(){
 			clearInterval(stopwatch.intervalId);
 			stop.removeEventListener("click", endTimer)
@@ -61,7 +61,7 @@ function startGame() {
 			clearTimeout(gameTimeout);
 			endGame()
 		}
-	});
+	}, { once: true });
 }
 
 function createScoreboard() {
@@ -110,10 +110,6 @@ function endGame(endTime) {
 		document.querySelector('.timer').style.display = 'none';
 	}
 
-	if(name.length == 0 && endTime !== undefined) {
-		endTime['name'] = 'Spieler 1';
-	}
-
 	const tl = gsap.timeline({ default: { ease: "power2.out" } });
 	tl.add('start')
 	.to(bg, {css: { backgroundColor: "white" }, duration: 1}, 'start')
@@ -137,7 +133,7 @@ function endGame(endTime) {
 		}
 		
 		let gamesCount = (Object.keys(scoreObj).length) + 1;
-		let player = name;
+		let player = (name == '' || name.length == 0) ? 'Spieler 1' : name;
 		let time = Number(`${endTime.seconds}.${endTime.milliseconds}`);
 		scoreObj['game' + gamesCount] = {};
 		scoreObj['game' + gamesCount]['player'] = player;
@@ -163,5 +159,3 @@ window.onload = function WindowLoad(event) {
         stagger: 0.25
     });
 }
-
-//todo remove eventlistner
