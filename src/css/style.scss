@@ -153,3 +153,18 @@ input#userName {
 .container {
     max-height: 385px;
 }
+
+@media(max-width: 767px) {
+    .cube.starting .top {
+        transform: rotateY(-90deg) translate3d(-50%, 0, 0);
+    }
+    
+    #headline,
+    #timerContainer {
+        font-size: 10vw;
+
+        .timer > span{
+            display: block;
+        }
+    }
+}
