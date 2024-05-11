@@ -2,12 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-$duration: .5s;
+$duration: 0.5s;
 
 // npx tailwindcss -i ./src/css/style.css -o ./dist/output.css --watch
 // tailwind components: https://www.hyperui.dev/
 body {
     height: 100vh;
+    height: 100svh;
     display: flex;
 }
 
@@ -21,8 +22,8 @@ body {
 
     &.starting {
         transform: rotateY(90deg);
-        
-        .front { 
+
+        .front {
             pointer-events: none;
             > .container {
                 box-shadow: none;
@@ -66,8 +67,8 @@ body {
         animation-direction: alternate;
     }
 
-    &#stopButton{
-        color: rgb(50,50,50);
+    &#stopButton {
+        color: rgb(50, 50, 50);
 
         &:hover {
             animation: none;
@@ -75,8 +76,8 @@ body {
     }
 }
 
-.top {   
-    transform: rotateY(90deg) translate3d(18.7em, 0, 0em);   
+.top {
+    transform: rotateY(90deg) translate3d(18.7em, 0, 0em);
     position: absolute;
     width: 100%;
     height: 100%;
@@ -111,7 +112,7 @@ input#userName {
 
 .animationContainer,
 #headline {
-    transform: translate(-100vw ,0);
+    transform: translate(-100vw, 0);
 }
 
 .background-animate {
@@ -154,16 +155,16 @@ input#userName {
     max-height: 385px;
 }
 
-@media(max-width: 767px) {
+@media (max-width: 767px) {
     .cube.starting .top {
         transform: rotateY(-90deg) translate3d(-50%, 0, 0);
     }
-    
+
     #headline,
     #timerContainer {
         font-size: 10vw;
 
-        .timer > span{
+        .timer > span {
             display: block;
         }
     }
